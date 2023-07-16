@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/Models/catalog.dart';
 import 'package:flutter_catalog/Widgets/drawer.dart';
+
+import '../Widgets/item_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,9 +19,16 @@ class HomePage extends StatelessWidget {
           "Catalog App",
         ),
       ),
-      body: Center(
-        child: Container(
-          child: Text("Welcome to $days days of Flutter by $name"),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          itemCount: CatalogModel.items.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(
+              item: CatalogModel.items[index],
+            );
+          },
         ),
       ),
       drawer: MyDrawer(),
