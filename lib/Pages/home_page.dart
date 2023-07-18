@@ -5,8 +5,6 @@ import 'dart:convert';
 import 'package:flutter_catalog/Models/catalog.dart';
 import 'package:flutter_catalog/Widgets/drawer.dart';
 
-import '../Widgets/item_widget.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
