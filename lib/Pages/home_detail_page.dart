@@ -15,7 +15,9 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.creamColor,
       bottomNavigationBar: Container(
         color: Colors.white,
@@ -30,8 +32,8 @@ class HomeDetailPage extends StatelessWidget {
                   backgroundColor:
                       MaterialStateProperty.all(MyTheme.darkBluishColor),
                   shape: MaterialStateProperty.all(const StadiumBorder())),
-              child: "Buy".text.white.make(),
-            ).wh(100, 50),
+              child: "Add to cart".text.white.make(),
+            ).wh(120, 50),
           ],
         ).p32(),
       ),
@@ -40,11 +42,9 @@ class HomeDetailPage extends StatelessWidget {
         child: Column(
           children: [
             Hero(
-              tag: Key(
-                catalog.id.toString(),
-              ),
+              tag: Key(catalog.id.toString()),
               child: Image.network(catalog.image),
-            ).h40(context),
+            ).h32(context),
             Expanded(
               child: VxArc(
                 height: 30.0,
@@ -64,8 +64,14 @@ class HomeDetailPage extends StatelessWidget {
                           .xl
                           .make(),
                       10.heightBox,
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam venenatis neque non justo porta mattis. Cras ultricies diam eget semper maximus. Aenean scelerisque ut diam quis tempor. Nam eu neque at lectus condimentum volutpat sit amet vel tellus. Donec porttitor in nisl non consequat."
+                          .text
+                          .textStyle(context.captionStyle)
+                          .make()
+                          .p16()
+                          .expand(),
                     ],
-                  ).py64(),
+                  ).py32(),
                 ),
               ),
             )
