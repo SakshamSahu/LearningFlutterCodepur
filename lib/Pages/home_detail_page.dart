@@ -31,7 +31,7 @@ class HomeDetailPage extends StatelessWidget {
                       .floatingActionButtonTheme
                       .backgroundColor),
                   shape: MaterialStateProperty.all(const StadiumBorder())),
-              child: "Add to cart".text.white.make(),
+              child: "Add to cart".text.white.bold.make(),
             ).wh(120, 50),
           ],
         ).p32(),
