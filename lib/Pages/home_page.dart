@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_catalog/Utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_catalog/Models/catalog.dart';
-import 'package:flutter_catalog/Widgets/themes.dart';
 import '../Widgets/home_widgets/catalog_header.dart';
 import '../Widgets/home_widgets/catalog_list.dart';
 
@@ -44,11 +43,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: MyTheme.creamColor,
+        backgroundColor: Theme.of(context)
+            .canvasColor, //you can use "context.cardcolor" if using velocity_x.
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-          backgroundColor: MyTheme.darkBluishColor,
-          child: Icon(CupertinoIcons.cart),
+          child: Icon(
+            CupertinoIcons.cart,
+            color: Colors.white,
+          ),
         ),
         body: SafeArea(
           child: Container(
