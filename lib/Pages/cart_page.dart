@@ -13,7 +13,7 @@ class CartPage extends StatelessWidget {
           backgroundColor: Colors.transparent,
           title: "Cart".text.make(),
         ),
-        body: const Column(
+        body: Column(
           children: [
             Expanded(
               child: Padding(
@@ -21,7 +21,7 @@ class CartPage extends StatelessWidget {
                 child: _CartList(),
               ),
             ),
-            Divider(),
+            const Divider(),
             _CartTotal(),
           ],
         ));
@@ -76,14 +76,7 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartList extends StatefulWidget {
-  const _CartList({super.key});
-
-  @override
-  State<_CartList> createState() => _CartListState();
-}
-
-class _CartListState extends State<_CartList> {
+class _CartList extends StatelessWidget {
   final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
@@ -106,7 +99,7 @@ class _CartListState extends State<_CartList> {
                 icon: const Icon(Icons.remove_circle_outline),
                 onPressed: () {
                   _cart.remove(_cart.items[index]);
-                  setState(() {});
+                  //setState(() {});
                 },
               ),
               title: Text(_cart.items[index].name),
