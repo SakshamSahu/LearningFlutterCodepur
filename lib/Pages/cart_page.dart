@@ -23,18 +23,18 @@ class CartPage extends StatelessWidget {
               ),
             ),
             const Divider(),
-            _CartTotal(),
+            const _CartTotal(),
           ],
         ));
   }
 }
 
 class _CartTotal extends StatelessWidget {
-  const _CartTotal({super.key});
+  const _CartTotal();
 
   @override
   Widget build(BuildContext context) {
-    final CartModel _cart = (VxState.store as MyStore).cart;
+    final CartModel cart = (VxState.store as MyStore).cart;
     return SizedBox(
       height: 150,
       child: Row(
@@ -43,7 +43,7 @@ class _CartTotal extends StatelessWidget {
           VxBuilder(
             mutations: const {RemoveMutation},
             builder: (context, store, status) {
-              return "\$${_cart.totalPrice}"
+              return "\$${cart.totalPrice}"
                   .text
                   .xl5
                   .color(context.theme.colorScheme.secondary)
@@ -86,8 +86,8 @@ class _CartList extends StatelessWidget {
     VxState.watch(context, on: [
       RemoveMutation,
     ]);
-    final CartModel _cart = (VxState.store as MyStore).cart;
-    return _cart.items.isEmpty
+    final CartModel cart = (VxState.store as MyStore).cart;
+    return cart.items.isEmpty
         ? const Center(
             child: Text(
               "Nothing to show",
@@ -99,14 +99,14 @@ class _CartList extends StatelessWidget {
         : ListView.builder(
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
-            itemCount: _cart.items.length,
+            itemCount: cart.items.length,
             itemBuilder: (context, index) => ListTile(
               leading: const Icon(Icons.done),
               trailing: IconButton(
                 icon: const Icon(Icons.remove_circle_outline),
-                onPressed: () => RemoveMutation(_cart.items[index]),
+                onPressed: () => RemoveMutation(cart.items[index]),
               ),
-              title: Text(_cart.items[index].name),
+              title: Text(cart.items[index].name),
             ),
           );
   }
